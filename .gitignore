@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Pythia data / outputs
+pythia_*/
+logs_series_*/
+*.npy
+*.npz
