@@ -1,0 +1,4 @@
+bash run_ee_chunks.sh gg 5                    # running α_s(mZ) = 0.13
+bash run_ee_chunks.sh gg 5 --fixed-alphas     # α_s frozen at 0.13
+bash run_ee_chunks.sh qq 10 --fixed-alphas --quark u   # unknown flags go to the generator
+CHUNK_SIZE=25000 N_CHUNKS=40 bash run_ee_chunks.sh gg 5 --fixed-alphas

@@ -1,0 +1,535 @@
+Generating 10 chunks of 100000 events
+  process=gg  ecm=2000  n-final=14  alpha_s=0.13 (run)
+  extra generator args: <none>
+  seeds: 1..10
+  total: 1000000 events  ->  pythia_gg_2000_N14_a0.13run_part{1..10}
+
+=== chunk 1/10  seed=1  ->  pythia_gg_2000_N14_a0.13run_part1 ===
+
+ *-------  PYTHIA Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | f fbar -> H (SM)                               901 |      105036     100000     100000 |   1.162e-24  5.732e-33 |
+ |                                                    |                                   |                        |
+ | sum                                                |      105036     100000     100000 |   1.162e-24  5.732e-33 |
+ |                                                                                                                 |
+ *-------  End PYTHIA Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |      0   no errors or warnings to report                                                                        | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+  ... event 5000 / 100000
+  ... event 10000 / 100000
+  ... event 15000 / 100000
+  ... event 20000 / 100000
+  ... event 25000 / 100000
+  ... event 30000 / 100000
+  ... event 35000 / 100000
+  ... event 40000 / 100000
+  ... event 45000 / 100000
+  ... event 50000 / 100000
+  ... event 55000 / 100000
+  ... event 60000 / 100000
+  ... event 65000 / 100000
+  ... event 70000 / 100000
+  ... event 75000 / 100000
+  ... event 80000 / 100000
+  ... event 85000 / 100000
+  ... event 90000 / 100000
+  ... event 95000 / 100000
+  ... event 100000 / 100000
+Generated 100000 events (0 skipped); up to 12 branchings observed.
+  step 12: N =   99989  shape = (99989, 14, 4)  max |sum p - p_tot| = 2.534e-08 GeV  (0 rows outside tol) [OK]
+All snapshots conserve 4-momentum within tolerance.
+Wall time: 963.2 s  (seed 1)
+=== chunk 1 done ===
+
+=== chunk 2/10  seed=2  ->  pythia_gg_2000_N14_a0.13run_part2 ===
+
+ *-------  PYTHIA Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | f fbar -> H (SM)                               901 |      105013     100000     100000 |   1.162e-24  5.773e-33 |
+ |                                                    |                                   |                        |
+ | sum                                                |      105013     100000     100000 |   1.162e-24  5.773e-33 |
+ |                                                                                                                 |
+ *-------  End PYTHIA Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |      0   no errors or warnings to report                                                                        | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+  ... event 5000 / 100000
+  ... event 10000 / 100000
+  ... event 15000 / 100000
+  ... event 20000 / 100000
+  ... event 25000 / 100000
+  ... event 30000 / 100000
+  ... event 35000 / 100000
+  ... event 40000 / 100000
+  ... event 45000 / 100000
+  ... event 50000 / 100000
+  ... event 55000 / 100000
+  ... event 60000 / 100000
+  ... event 65000 / 100000
+  ... event 70000 / 100000
+  ... event 75000 / 100000
+  ... event 80000 / 100000
+  ... event 85000 / 100000
+  ... event 90000 / 100000
+  ... event 95000 / 100000
+  ... event 100000 / 100000
+Generated 100000 events (0 skipped); up to 12 branchings observed.
+  step 12: N =   99978  shape = (99978, 14, 4)  max |sum p - p_tot| = 2.539e-08 GeV  (0 rows outside tol) [OK]
+All snapshots conserve 4-momentum within tolerance.
+Wall time: 912.0 s  (seed 2)
+=== chunk 2 done ===
+
+=== chunk 3/10  seed=3  ->  pythia_gg_2000_N14_a0.13run_part3 ===
+
+ *-------  PYTHIA Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | f fbar -> H (SM)                               901 |      104964     100000     100000 |   1.162e-24  5.738e-33 |
+ |                                                    |                                   |                        |
+ | sum                                                |      104964     100000     100000 |   1.162e-24  5.738e-33 |
+ |                                                                                                                 |
+ *-------  End PYTHIA Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |      0   no errors or warnings to report                                                                        | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+  ... event 5000 / 100000
+  ... event 10000 / 100000
+  ... event 15000 / 100000
+  ... event 20000 / 100000
+  ... event 25000 / 100000
+  ... event 30000 / 100000
+  ... event 35000 / 100000
+  ... event 40000 / 100000
+  ... event 45000 / 100000
+  ... event 50000 / 100000
+  ... event 55000 / 100000
+  ... event 60000 / 100000
+  ... event 65000 / 100000
+  ... event 70000 / 100000
+  ... event 75000 / 100000
+  ... event 80000 / 100000
+  ... event 85000 / 100000
+  ... event 90000 / 100000
+  ... event 95000 / 100000
+  ... event 100000 / 100000
+Generated 100000 events (0 skipped); up to 12 branchings observed.
+  step 12: N =   99991  shape = (99991, 14, 4)  max |sum p - p_tot| = 8.925e-09 GeV  (0 rows outside tol) [OK]
+All snapshots conserve 4-momentum within tolerance.
+Wall time: 910.1 s  (seed 3)
+=== chunk 3 done ===
+
+=== chunk 4/10  seed=4  ->  pythia_gg_2000_N14_a0.13run_part4 ===
+
+ *-------  PYTHIA Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | f fbar -> H (SM)                               901 |      104991     100000     100000 |   1.162e-24  5.765e-33 |
+ |                                                    |                                   |                        |
+ | sum                                                |      104991     100000     100000 |   1.162e-24  5.765e-33 |
+ |                                                                                                                 |
+ *-------  End PYTHIA Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |      0   no errors or warnings to report                                                                        | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+  ... event 5000 / 100000
+  ... event 10000 / 100000
+  ... event 15000 / 100000
+  ... event 20000 / 100000
+  ... event 25000 / 100000
+  ... event 30000 / 100000
+  ... event 35000 / 100000
+  ... event 40000 / 100000
+  ... event 45000 / 100000
+  ... event 50000 / 100000
+  ... event 55000 / 100000
+  ... event 60000 / 100000
+  ... event 65000 / 100000
+  ... event 70000 / 100000
+  ... event 75000 / 100000
+  ... event 80000 / 100000
+  ... event 85000 / 100000
+  ... event 90000 / 100000
+  ... event 95000 / 100000
+  ... event 100000 / 100000
+Generated 100000 events (0 skipped); up to 12 branchings observed.
+  step 12: N =   99995  shape = (99995, 14, 4)  max |sum p - p_tot| = 1.673e-08 GeV  (0 rows outside tol) [OK]
+All snapshots conserve 4-momentum within tolerance.
+Wall time: 898.8 s  (seed 4)
+=== chunk 4 done ===
+
+=== chunk 5/10  seed=5  ->  pythia_gg_2000_N14_a0.13run_part5 ===
+
+ *-------  PYTHIA Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | f fbar -> H (SM)                               901 |      105003     100000     100000 |   1.162e-24  5.750e-33 |
+ |                                                    |                                   |                        |
+ | sum                                                |      105003     100000     100000 |   1.162e-24  5.750e-33 |
+ |                                                                                                                 |
+ *-------  End PYTHIA Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |      0   no errors or warnings to report                                                                        | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+  ... event 5000 / 100000
+  ... event 10000 / 100000
+  ... event 15000 / 100000
+  ... event 20000 / 100000
+  ... event 25000 / 100000
+  ... event 30000 / 100000
+  ... event 35000 / 100000
+  ... event 40000 / 100000
+  ... event 45000 / 100000
+  ... event 50000 / 100000
+  ... event 55000 / 100000
+  ... event 60000 / 100000
+  ... event 65000 / 100000
+  ... event 70000 / 100000
+  ... event 75000 / 100000
+  ... event 80000 / 100000
+  ... event 85000 / 100000
+  ... event 90000 / 100000
+  ... event 95000 / 100000
+  ... event 100000 / 100000
+Generated 100000 events (0 skipped); up to 12 branchings observed.
+  step 12: N =   99991  shape = (99991, 14, 4)  max |sum p - p_tot| = 8.030e-09 GeV  (0 rows outside tol) [OK]
+All snapshots conserve 4-momentum within tolerance.
+Wall time: 809.1 s  (seed 5)
+=== chunk 5 done ===
+
+=== chunk 6/10  seed=6  ->  pythia_gg_2000_N14_a0.13run_part6 ===
+
+ *-------  PYTHIA Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | f fbar -> H (SM)                               901 |      105109     100000     100000 |   1.162e-24  5.749e-33 |
+ |                                                    |                                   |                        |
+ | sum                                                |      105109     100000     100000 |   1.162e-24  5.749e-33 |
+ |                                                                                                                 |
+ *-------  End PYTHIA Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |      0   no errors or warnings to report                                                                        | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+  ... event 5000 / 100000
+  ... event 10000 / 100000
+  ... event 15000 / 100000
+  ... event 20000 / 100000
+  ... event 25000 / 100000
+  ... event 30000 / 100000
+  ... event 35000 / 100000
+  ... event 40000 / 100000
+  ... event 45000 / 100000
+  ... event 50000 / 100000
+  ... event 55000 / 100000
+  ... event 60000 / 100000
+  ... event 65000 / 100000
+  ... event 70000 / 100000
+  ... event 75000 / 100000
+  ... event 80000 / 100000
+  ... event 85000 / 100000
+  ... event 90000 / 100000
+  ... event 95000 / 100000
+  ... event 100000 / 100000
+Generated 100000 events (0 skipped); up to 12 branchings observed.
+  step 12: N =   99980  shape = (99980, 14, 4)  max |sum p - p_tot| = 8.846e-09 GeV  (0 rows outside tol) [OK]
+All snapshots conserve 4-momentum within tolerance.
+Wall time: 864.6 s  (seed 6)
+=== chunk 6 done ===
+
+=== chunk 7/10  seed=7  ->  pythia_gg_2000_N14_a0.13run_part7 ===
+
+ *-------  PYTHIA Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | f fbar -> H (SM)                               901 |      104866     100000     100000 |   1.162e-24  5.778e-33 |
+ |                                                    |                                   |                        |
+ | sum                                                |      104866     100000     100000 |   1.162e-24  5.778e-33 |
+ |                                                                                                                 |
+ *-------  End PYTHIA Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |      0   no errors or warnings to report                                                                        | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+  ... event 5000 / 100000
+  ... event 10000 / 100000
+  ... event 15000 / 100000
+  ... event 20000 / 100000
+  ... event 25000 / 100000
+  ... event 30000 / 100000
+  ... event 35000 / 100000
+  ... event 40000 / 100000
+  ... event 45000 / 100000
+  ... event 50000 / 100000
+  ... event 55000 / 100000
+  ... event 60000 / 100000
+  ... event 65000 / 100000
+  ... event 70000 / 100000
+  ... event 75000 / 100000
+  ... event 80000 / 100000
+  ... event 85000 / 100000
+  ... event 90000 / 100000
+  ... event 95000 / 100000
+  ... event 100000 / 100000
+Generated 100000 events (0 skipped); up to 12 branchings observed.
+  step 12: N =   99989  shape = (99989, 14, 4)  max |sum p - p_tot| = 1.591e-08 GeV  (0 rows outside tol) [OK]
+All snapshots conserve 4-momentum within tolerance.
+Wall time: 829.9 s  (seed 7)
+=== chunk 7 done ===
+
+=== chunk 8/10  seed=8  ->  pythia_gg_2000_N14_a0.13run_part8 ===
+
+ *-------  PYTHIA Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | f fbar -> H (SM)                               901 |      104987     100000     100000 |   1.162e-24  5.778e-33 |
+ |                                                    |                                   |                        |
+ | sum                                                |      104987     100000     100000 |   1.162e-24  5.778e-33 |
+ |                                                                                                                 |
+ *-------  End PYTHIA Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |      0   no errors or warnings to report                                                                        | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+  ... event 5000 / 100000
+  ... event 10000 / 100000
+  ... event 15000 / 100000
+  ... event 20000 / 100000
+  ... event 25000 / 100000
+  ... event 30000 / 100000
+  ... event 35000 / 100000
+  ... event 40000 / 100000
+  ... event 45000 / 100000
+  ... event 50000 / 100000
+  ... event 55000 / 100000
+  ... event 60000 / 100000
+  ... event 65000 / 100000
+  ... event 70000 / 100000
+  ... event 75000 / 100000
+  ... event 80000 / 100000
+  ... event 85000 / 100000
+  ... event 90000 / 100000
+  ... event 95000 / 100000
+  ... event 100000 / 100000
+Generated 100000 events (0 skipped); up to 12 branchings observed.
+  step 12: N =   99989  shape = (99989, 14, 4)  max |sum p - p_tot| = 1.831e-08 GeV  (0 rows outside tol) [OK]
+All snapshots conserve 4-momentum within tolerance.
+Wall time: 919.4 s  (seed 8)
+=== chunk 8 done ===
+
+=== chunk 9/10  seed=9  ->  pythia_gg_2000_N14_a0.13run_part9 ===
+
+ *-------  PYTHIA Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | f fbar -> H (SM)                               901 |      104957     100000     100000 |   1.162e-24  5.764e-33 |
+ |                                                    |                                   |                        |
+ | sum                                                |      104957     100000     100000 |   1.162e-24  5.764e-33 |
+ |                                                                                                                 |
+ *-------  End PYTHIA Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |      0   no errors or warnings to report                                                                        | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+  ... event 5000 / 100000
+  ... event 10000 / 100000
+  ... event 15000 / 100000
+  ... event 20000 / 100000
+  ... event 25000 / 100000
+  ... event 30000 / 100000
+  ... event 35000 / 100000
+  ... event 40000 / 100000
+  ... event 45000 / 100000
+  ... event 50000 / 100000
+  ... event 55000 / 100000
+  ... event 60000 / 100000
+  ... event 65000 / 100000
+  ... event 70000 / 100000
+  ... event 75000 / 100000
+  ... event 80000 / 100000
+  ... event 85000 / 100000
+  ... event 90000 / 100000
+  ... event 95000 / 100000
+  ... event 100000 / 100000
+Generated 100000 events (0 skipped); up to 12 branchings observed.
+  step 12: N =   99989  shape = (99989, 14, 4)  max |sum p - p_tot| = 1.867e-08 GeV  (0 rows outside tol) [OK]
+All snapshots conserve 4-momentum within tolerance.
+Wall time: 883.4 s  (seed 9)
+=== chunk 9 done ===
+
+=== chunk 10/10  seed=10  ->  pythia_gg_2000_N14_a0.13run_part10 ===
+
+ *-------  PYTHIA Event and Cross Section Statistics  -------------------------------------------------------------*
+ |                                                                                                                 |
+ | Subprocess                                    Code |            Number of events       |      sigma +- delta    |
+ |                                                    |       Tried   Selected   Accepted |     (estimated) (mb)   |
+ |                                                    |                                   |                        |
+ |-----------------------------------------------------------------------------------------------------------------|
+ |                                                    |                                   |                        |
+ | f fbar -> H (SM)                               901 |      105009     100000     100000 |   1.162e-24  5.753e-33 |
+ |                                                    |                                   |                        |
+ | sum                                                |      105009     100000     100000 |   1.162e-24  5.753e-33 |
+ |                                                                                                                 |
+ *-------  End PYTHIA Event and Cross Section Statistics ----------------------------------------------------------*
+
+ *-------  PYTHIA Error and Warning Messages Statistics  ----------------------------------------------------------* 
+ |                                                                                                                 | 
+ |  times   message                                                                                                | 
+ |                                                                                                                 | 
+ |      0   no errors or warnings to report                                                                        | 
+ |                                                                                                                 | 
+ *-------  End PYTHIA Error and Warning Messages Statistics  ------------------------------------------------------* 
+  ... event 5000 / 100000
+  ... event 10000 / 100000
+  ... event 15000 / 100000
+  ... event 20000 / 100000
+  ... event 25000 / 100000
+  ... event 30000 / 100000
+  ... event 35000 / 100000
+  ... event 40000 / 100000
+  ... event 45000 / 100000
+  ... event 50000 / 100000
+  ... event 55000 / 100000
+  ... event 60000 / 100000
+  ... event 65000 / 100000
+  ... event 70000 / 100000
+  ... event 75000 / 100000
+  ... event 80000 / 100000
+  ... event 85000 / 100000
+  ... event 90000 / 100000
+  ... event 95000 / 100000
+  ... event 100000 / 100000
+Generated 100000 events (0 skipped); up to 12 branchings observed.
+  step 12: N =   99985  shape = (99985, 14, 4)  max |sum p - p_tot| = 1.498e-08 GeV  (0 rows outside tol) [OK]
+All snapshots conserve 4-momentum within tolerance.
+Wall time: 852.1 s  (seed 10)
+=== chunk 10 done ===
+
+All chunks generated. Merging into pythia_gg_2000_N14_a0.13run/ ...
+Merging 10 chunk directories:
+    pythia_gg_2000_N14_a0.13run_part1
+    pythia_gg_2000_N14_a0.13run_part10
+    pythia_gg_2000_N14_a0.13run_part2
+    pythia_gg_2000_N14_a0.13run_part3
+    pythia_gg_2000_N14_a0.13run_part4
+    pythia_gg_2000_N14_a0.13run_part5
+    pythia_gg_2000_N14_a0.13run_part6
+    pythia_gg_2000_N14_a0.13run_part7
+    pythia_gg_2000_N14_a0.13run_part8
+    pythia_gg_2000_N14_a0.13run_part9
+
+Checking chunk metadata...
+
+  step 12:   999876 rows  shape=(999876, 14, 4)
+  single-step dataset: also written as momenta_N14.npy (N = 14 partons x (E, px, py, pz))
+  metadata.json written (1000000 events generated over 10 chunks)
+
+Merged 999876 total rows into pythia_gg_2000_N14_a0.13run/
+Load the momenta with np.load('pythia_gg_2000_N14_a0.13run/momenta_N14.npy')
+
+Verifying merge before deleting chunk directories...
+  step 12: 999876 rows vs 999876 expected  [ok]
+
+Verification passed. Deleting chunk directories:
+    removed pythia_gg_2000_N14_a0.13run_part1
+    removed pythia_gg_2000_N14_a0.13run_part10
+    removed pythia_gg_2000_N14_a0.13run_part2
+    removed pythia_gg_2000_N14_a0.13run_part3
+    removed pythia_gg_2000_N14_a0.13run_part4
+    removed pythia_gg_2000_N14_a0.13run_part5
+    removed pythia_gg_2000_N14_a0.13run_part6
+    removed pythia_gg_2000_N14_a0.13run_part7
+    removed pythia_gg_2000_N14_a0.13run_part8
+    removed pythia_gg_2000_N14_a0.13run_part9
+Done.
+
+Normalizing momenta by E_cm ...
+Normalizing momenta in pythia_gg_2000_N14_a0.13run/ by E_cm = 2000.0 GeV
+  momenta_N14.npy        -> momenta_N14_norm.npy        shape=(999876, 14, 4)  max |sum p/Ecm - (1,0,0,0)| = 7.47e-08  (0 rows outside tol) [OK]
+  splittings_12.npy      -> splittings_12_norm.npy      shape=(999876, 14, 4)  max |sum p/Ecm - (1,0,0,0)| = 7.47e-08  (0 rows outside tol) [OK]
+  metadata.json updated
+Done; all normalized rows sum to (1, 0, 0, 0) within tolerance.
+
+Done. Dataset: pythia_gg_2000_N14_a0.13run/
+    momenta_N14.npy        (E, px, py, pz) in GeV
+    momenta_N14_norm.npy   divided by E_cm = 2000 GeV
+    metadata.json
