@@ -15,9 +15,21 @@ normalized arrays are checked to sum to (1, 0, 0, 0) per row and the check
 result is written back into metadata.json under ``normalized_files``.
 Existing ``*_norm.npy`` files are only replaced with --overwrite.
 
+In addition, for the fixed-multiplicity ``momenta_N*.npy`` file the normalized
+3-momenta (px, py, pz)/E_cm are exported as a torch tensor of shape
+(n_events, N, 3) in the collaboration's naming convention, e.g.
+
+    ee2gg_S=2000GeV_a=0p13_N=1000000_NBranch=3_Nparticles=5_p3_normalized.pt
+
+(``_afixed`` is inserted after the alpha tag for frozen-alpha_s datasets).
+The energy column is dropped because the partons are massless so E = |p|.
+Requires torch; skipped with a warning if it is not importable, or with
+--no-pt.  Override the file name with --pt-name.
+
 Usage:
     python normalize_momenta.py DATASET_DIR [--ecm ECM] [--overwrite]
-                                            [--tolerance TOL]
+                                            [--tolerance TOL] [--no-pt]
+                                            [--pt-name NAME]
 """
 from __future__ import annotations
 
@@ -32,6 +44,58 @@ import numpy as np
 SOURCE_RE = re.compile(r"^(splittings_(\d+|all)|momenta_N\d+)\.npy$")
 
 
+def default_pt_name(meta: dict | None, ecm: float, n_events: int, n_part: int) -> str:
+    """ee2{gg|qqbar}_S={ecm}GeV_a={alphas}[_afixed]_N={n}_NBranch={k}_Nparticles={N}_p3_normalized.pt"""
+    meta = meta or {}
+    proc = {"gg": "gg", "qq": "qqbar"}.get(meta.get("hard_final_state"), "xx")
+    alphas = meta.get("alphas_value")
+    a_tag = f"{alphas:g}".replace(".", "p") if alphas is not None else "unknown"
+    if meta.get("alphas_order") == 0:
+        a_tag += "_afixed"
+    ecm_tag = f"{ecm:g}"
+    return (f"ee2{proc}_S={ecm_tag}GeV_a={a_tag}_N={n_events}"
+            f"_NBranch={n_part - 2}_Nparticles={n_part}_p3_normalized.pt")
+
+
+def export_pt(d: str, ecm: float, meta: dict | None, name: str | None,
+              overwrite: bool) -> dict | None:
+    """Write the normalized 3-momenta of momenta_N*.npy as a torch tensor."""
+    sources = sorted(glob.glob(os.path.join(d, "momenta_N*.npy")))
+    sources = [f for f in sources if not f.endswith("_norm.npy")]
+    if not sources:
+        print("  (no momenta_N*.npy file; skipping .pt export)")
+        return None
+    if len(sources) > 1:
+        print(f"  WARNING: several momenta files {sources}; exporting the first only")
+    src = sources[0]
+    try:
+        import torch
+    except ImportError:
+        print("  WARNING: torch not importable; skipping .pt export "
+              "(activate the venv with torch, or pass --no-pt to silence)")
+        return None
+    arr = np.load(src)
+    n_events, n_part, _ = arr.shape
+    name = name or default_pt_name(meta, ecm, n_events, n_part)
+    out_path = os.path.join(d, name)
+    if os.path.exists(out_path) and not overwrite:
+        print(f"  {name} exists; skipping (use --overwrite to replace)")
+        return {"file": name, "shape": [n_events, n_part, 3]}
+    p3 = (arr[..., 1:4].astype(np.float64) / ecm).astype(np.float32)
+    t = torch.from_numpy(np.ascontiguousarray(p3))
+    torch.save(t, out_path)
+    # massless check: E/Ecm should equal |p|/Ecm
+    e_norm = arr[..., 0].astype(np.float64) / ecm
+    mass_dev = float(np.abs(np.linalg.norm(p3.astype(np.float64), axis=-1) - e_norm).max())
+    print(f"  {os.path.basename(src):22s} -> {name}")
+    print(f"      torch tensor shape={tuple(t.shape)} dtype={t.dtype}; "
+          f"max |(|p| - E)|/Ecm = {mass_dev:.2e} (quark-mass effects)")
+    return {"file": name, "source_file": os.path.basename(src),
+            "shape": list(t.shape),
+            "max_mass_deviation_over_ecm": mass_dev,
+            "note": "(px, py, pz)/E_cm as a torch float32 tensor; E dropped (massless partons, E = |p|)."}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -42,7 +106,12 @@ def main() -> None:
                     help="Per-component tolerance on the normalized total "
                          "4-momentum (default 1e-5; float32 data).")
     ap.add_argument("--overwrite", action="store_true",
-                    help="Replace existing *_norm.npy files.")
+                    help="Replace existing *_norm.npy / .pt files.")
+    ap.add_argument("--no-pt", dest="write_pt", action="store_false", default=True,
+                    help="Skip the torch (.pt) 3-momentum export.")
+    ap.add_argument("--pt-name", default=None,
+                    help="File name for the .pt export (default: built from "
+                         "metadata in the ee2qqbar_S=..._p3_normalized.pt style).")
     args = ap.parse_args()
 
     d = args.dataset_dir
@@ -104,6 +173,11 @@ def main() -> None:
             "max_conservation_deviation": max_dev,
             "rows_outside_tolerance": n_bad,
         }
+
+    if args.write_pt:
+        pt_info = export_pt(d, ecm, metadata, args.pt_name, args.overwrite)
+        if pt_info and metadata is not None:
+            metadata["pt_file"] = pt_info
 
     if metadata is not None and results:
         metadata.setdefault("normalized_files", {}).update(results)

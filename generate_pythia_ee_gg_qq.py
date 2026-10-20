@@ -16,9 +16,15 @@ The strong coupling is set via ``TimeShower:alphaSvalue`` (default 0.13).  By
 default this is alpha_s(mZ) with the usual running (``TimeShower:alphaSorder``
 = 1); pass ``--fixed-alphas`` to freeze alpha_s = 0.13 at every scale.
 
+Pure glue: pass ``--no-g2qq`` to switch off g -> q qbar in the final-state
+shower (``TimeShower:nGluonToQuark = 0``), so the only QCD branching left is
+g -> g g (plus q -> q g on quark lines).  With ``--process gg`` the whole
+shower is then gluons only.  ``--ptmin`` overrides the shower cutoff
+``TimeShower:pTmin``; lowering it lets more events reach a large N.
+
 Snapshots: the pT-ordered FSR shower is walked with ``extract_fsr_snapshots``,
 which records the active partons after every branching.  Only the snapshot at
-exactly ``--n-final`` partons (5 or 10, i.e. k = N - 2 branchings after the two
+exactly ``--n-final`` partons (any N >= 3, i.e. k = N - 2 branchings after the two
 seed partons) is kept, so every event that showers to at least N partons
 contributes one (N, 4) array of (E, px, py, pz).  Events that stop short of N
 partons are dropped.  Output (``splittings_{N-2}.npy``, ``event_ids_{N-2}.npy``,
@@ -27,6 +33,7 @@ partons are dropped.  Output (``splittings_{N-2}.npy``, ``event_ids_{N-2}.npy``,
 Usage:
     python generate_pythia_ee_gg_qq.py --process gg --n-final 5  [-n N] [--seed S]
     python generate_pythia_ee_gg_qq.py --process qq --n-final 10 [-n N] [--seed S]
+    python generate_pythia_ee_gg_qq.py --process gg --n-final 30 --fixed-alphas --no-g2qq
 """
 
 from __future__ import annotations
@@ -57,7 +64,8 @@ QUARK_CHOICES = {
 
 
 def configure_pythia(seed: int, ecm: float, process: str, alphas: float,
-                     fixed_alphas: bool, quarks: tuple[int, ...]):
+                     fixed_alphas: bool, quarks: tuple[int, ...],
+                     no_g2qq: bool = False, ptmin: float | None = None):
     p = pythia8.Pythia("", False)
     settings = [
         "Random:setSeed = on",
@@ -82,6 +90,11 @@ def configure_pythia(seed: int, ecm: float, process: str, alphas: float,
     else:
         raise SystemExit(f"unknown process {process!r}")
     settings.extend(COMMON_EE_SETTINGS)
+    # Overrides go AFTER the common settings so nothing there can undo them.
+    if no_g2qq:
+        settings.append("TimeShower:nGluonToQuark = 0")       # no g -> q qbar
+    if ptmin is not None:
+        settings.append(f"TimeShower:pTmin = {ptmin}")        # shower cutoff
     for s in settings:
         p.readString(s)
     if not p.init():
@@ -114,21 +127,30 @@ def main() -> None:
                         help="Hard final state: gg (H->gg) or qq (H->qqbar).")
     parser.add_argument("--n-final", type=int, required=True,
                         help="Number of final-state partons at which to take "
-                             "the snapshot (5 or 10).")
+                             "the snapshot (any integer >= 3).")
     parser.add_argument("--alphas", type=float, default=0.13,
                         help="TimeShower:alphaSvalue (default 0.13).")
     parser.add_argument("--fixed-alphas", action="store_true",
                         help="Freeze alpha_s at --alphas (TimeShower:alphaSorder "
                              "= 0) instead of running it from mZ.")
+    parser.add_argument("--no-g2qq", action="store_true",
+                        help="Switch off g -> q qbar in the shower "
+                             "(TimeShower:nGluonToQuark = 0): pure-glue shower.")
+    parser.add_argument("--ptmin", type=float, default=None,
+                        help="Override TimeShower:pTmin (GeV). Default: leave "
+                             "the value from COMMON_EE_SETTINGS / Pythia.")
     parser.add_argument("--quark", choices=tuple(QUARK_CHOICES), default="uds",
                         help="Quark flavours allowed in H -> q qbar "
                              "(--process qq only). Default: u, d, s mixed.")
     args = parser.parse_args()
+    if args.n_final < N_SEED + 1:
+        parser.error(f"--n-final must be >= {N_SEED + 1}")
     args.seed = resolve_seed(args.seed)
 
     quarks = QUARK_CHOICES[args.quark]
     pythia = configure_pythia(args.seed, args.ecm, args.process, args.alphas,
-                              args.fixed_alphas, quarks)
+                              args.fixed_alphas, quarks,
+                              no_g2qq=args.no_g2qq, ptmin=args.ptmin)
 
     if args.process == "gg":
         process = "e+e- -> H -> gg (H mass = eCM)"
@@ -142,6 +164,9 @@ def main() -> None:
         "higgs_m0_GeV": args.ecm,
         "alphas_value": args.alphas,
         "alphas_order": 0 if args.fixed_alphas else 1,
+        "g_to_qqbar": not args.no_g2qq,
+        "nGluonToQuark": 0 if args.no_g2qq else "pythia default",
+        "shower_pTmin_GeV": args.ptmin if args.ptmin is not None else "default",
         "n_final_partons": args.n_final,
         "snapshot_step_k": args.n_final - N_SEED,
         "note": (f"only the snapshot with exactly {args.n_final} partons "

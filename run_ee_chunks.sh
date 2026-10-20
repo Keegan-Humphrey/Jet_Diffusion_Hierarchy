@@ -17,12 +17,17 @@
 # Pass --no-merge to stop after generation and do those steps by hand.
 #
 # Usage:
-#   bash run_ee_chunks.sh <gg|qq> <5|10> [--fixed-alphas] [--force] [--no-merge] [extra args...]
+#   bash run_ee_chunks.sh <gg|qq> <N>=3> [--fixed-alphas] [--no-g2qq] [--force] [--no-merge] [extra args...]
 #
 # Examples:
 #   bash run_ee_chunks.sh gg 5                    # running alpha_s(mZ)=0.13
 #   bash run_ee_chunks.sh qq 10 --fixed-alphas    # alpha_s frozen at 0.13
 #   bash run_ee_chunks.sh gg 10 --quark u         # extra args go to the generator
+#   bash run_ee_chunks.sh gg 30 --fixed-alphas --no-g2qq   # pure glue, fixed alpha_s
+#
+# --no-g2qq switches off g -> q qbar in the shower; the output directory gets
+# a "_noG2qq" suffix so it never mixes with the default datasets.  For a series
+# of multiplicities in one go, use run_ee_series.sh.
 #
 # Environment overrides:
 #   CHUNK_SIZE (default 100000), N_CHUNKS (default 10), SEED0 (default: see
@@ -38,7 +43,7 @@
 set -euo pipefail
 
 if [[ $# -lt 2 ]]; then
-    sed -n '2,25p' "$0" | sed 's/^# \{0,1\}//'
+    sed -n '2,/^$/p' "$0" | sed 's/^# \{0,1\}//'
     exit 1
 fi
 
@@ -67,19 +72,22 @@ RECORD_FLAG="${RECORD_FLAG:---no-event-record}"   # set RECORD_FLAG="" to save e
 
 ALPHA_TAG="run"
 FIXED_FLAG=""
+G2QQ_FLAG=""
+G2QQ_TAG=""
 FORCE=0
 DO_MERGE=1
 EXTRA_ARGS=()
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --fixed-alphas) FIXED_FLAG="--fixed-alphas"; ALPHA_TAG="fix"; shift ;;
+        --no-g2qq)      G2QQ_FLAG="--no-g2qq"; G2QQ_TAG="_noG2qq"; shift ;;
         --force)        FORCE=1; shift ;;
         --no-merge)     DO_MERGE=0; shift ;;
         *)              EXTRA_ARGS+=("$1"); shift ;;
     esac
 done
 
-CONFIG="pythia_${PROCESS}_${ECM}_N${N_FINAL}_a${ALPHAS}${ALPHA_TAG}"
+CONFIG="pythia_${PROCESS}_${ECM}_N${N_FINAL}_a${ALPHAS}${ALPHA_TAG}${G2QQ_TAG}"
 
 # --- pick a run index so repeated runs of the same configuration never
 # collide (in directory name OR in seeds).  Run r is named CONFIG (r=1) or
@@ -110,7 +118,7 @@ if compgen -G "${OUT_PREFIX}*" > /dev/null; then
 fi
 
 echo "Generating ${N_CHUNKS} chunks of ${CHUNK_SIZE} events"
-echo "  process=${PROCESS}  ecm=${ECM}  n-final=${N_FINAL}  alpha_s=${ALPHAS} (${ALPHA_TAG})"
+echo "  process=${PROCESS}  ecm=${ECM}  n-final=${N_FINAL}  alpha_s=${ALPHAS} (${ALPHA_TAG})  g->qqbar=$([[ -n ${G2QQ_FLAG} ]] && echo off || echo on)"
 echo "  extra generator args: ${EXTRA_ARGS[*]:-<none>}"
 echo "  seeds: ${SEED0}..$(( SEED0 + N_CHUNKS - 1 ))"
 echo "  total: $(( CHUNK_SIZE * N_CHUNKS )) events  ->  ${OUT_PREFIX}{1..${N_CHUNKS}}"
@@ -131,6 +139,7 @@ for s in $(seq 1 "${N_CHUNKS}"); do
         --ecm "${ECM}" \
         --alphas "${ALPHAS}" \
         ${FIXED_FLAG} \
+        ${G2QQ_FLAG} \
         -n "${CHUNK_SIZE}" \
         --seed "${seed}" \
         --output-dir "${outdir}" \
